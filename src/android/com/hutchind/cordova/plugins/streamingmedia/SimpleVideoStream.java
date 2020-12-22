@@ -78,7 +78,6 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 			mVideoView.setOnPreparedListener(this);
 			mVideoView.setOnErrorListener(this);
 			mVideoView.setVideoURI(videoUri);
-			mVideoView.setLooping(true);
 			mMediaController = new MediaController(this);
 			mMediaController.setAnchorView(mVideoView);
 			mMediaController.setMediaPlayer(mVideoView);
@@ -118,6 +117,7 @@ MediaPlayer.OnErrorListener, MediaPlayer.OnBufferingUpdateListener {
 	public void onPrepared(MediaPlayer mp) {
 		Log.d(TAG, "Stream is prepared");
 		mMediaPlayer = mp;
+		mMediaPlayer.setLooping(true);
 		mMediaPlayer.setOnBufferingUpdateListener(this);
 		mVideoView.requestFocus();
 		mVideoView.start();
